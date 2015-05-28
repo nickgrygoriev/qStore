@@ -3,6 +3,18 @@
 <div class="list-group">
     @foreach (var category in Model)
     {
-        <a href="#" class="list-group-item">@category.Title</a>
+        <a href="@Url.Action("ProductList", "Home", new {id = category.Id})" class="list-group-item async">@category.Title</a>
     }
 </div>
+
+<script>
+    $(function() {
+        $('a.async').on('click', function(e) {
+            e.preventDefault();
+
+            var url = $(e.currentTarget).attr('href');
+
+            //TODO: create ajax call and replace  $('#products') html
+        });
+    })
+</script>

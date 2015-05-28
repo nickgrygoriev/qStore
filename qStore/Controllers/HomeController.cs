@@ -23,7 +23,7 @@ namespace qStore.Controllers
                 categories = db.Categories.ToList();
             }
 
-            return View(categories);
+            return PartialView(categories);
         }
 
         public ActionResult ProductList(Guid? id)
@@ -56,7 +56,7 @@ namespace qStore.Controllers
                             }).ToList();
             }
 
-            return View(prods);
+            return PartialView(prods);
         }
 
         public ActionResult About()

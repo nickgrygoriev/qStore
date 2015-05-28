@@ -5,12 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using qStore.Models;
+using qStore.Filters;
 
 namespace qStore.Controllers
 {
-    //TODO: AUTH!
     public class AdminController : Controller
     {
+        [SimpleAuthorize(Users="admin@gmail.com")] //pass:11111
         public ActionResult Index()
         {
             return View();
@@ -38,6 +39,19 @@ namespace qStore.Controllers
             }
 
             return PartialView(prods);
+        }
+
+        [HttpGet]
+        public ActionResult GetProductDetails(Guid id)
+        {
+            Product prod;
+
+            using (var db = new qStoreDBEntities())
+            {
+                prod = db.Products.SingleOrDefault(x => x.Id == id);
+            }
+
+            return PartialView(prod);
         }
 
         public ActionResult EditProduct(Guid? id)

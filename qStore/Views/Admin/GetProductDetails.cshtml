@@ -1,0 +1,47 @@
+﻿@model qStore.Models.Product
+
+@{
+    ViewBag.Title = "GetProductDetails";
+}
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="modal-body">
+                    <div class="form-horizontal">
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2">
+                                <img style="width:100px; height:100px" alt="Image" src="data:@Html.DisplayFor(model => model.ImageContentType);base64,@Html.DisplayFor(model => model.ImageBase64String)" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2">
+                                @Html.DisplayNameFor(model => model.Title)
+                                @Html.DisplayFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2">
+                                @Html.DisplayNameFor(model => model.Description)
+                                @Html.DisplayFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2">
+                                @Html.DisplayNameFor(model => model.Price)
+                                @Html.DisplayFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+        </div>
+    </div>
+</div>

@@ -37,10 +37,14 @@
         <td>
             @Html.ActionLink("Edit", "EditProduct", new { id=item.Id }) |
             @*TODO: add details view*@
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Details", "GetProductDetails", new { id=item.Id }) |
             @Html.ActionLink("Delete", "DeleteProduct", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
+
+<div id="modalSection"></div>
+
+

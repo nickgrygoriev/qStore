@@ -8,6 +8,19 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
 
+    @{
+        //Для того чтобы ссылки начали работать в режиме Ajax необходимы настройки для запроса
+        var ajaxOptions = new AjaxOptions
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "container"
+        };
+    }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,8 +35,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Products", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Ajax.ActionLink("Products", "Index", "Home", ajaxOptions)</li>
+                    <li>@Ajax.ActionLink("About", "About", "Home", ajaxOptions)</li>
                 </ul>
                 <ul class="nav navbar-nav pull-right">
                     <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
@@ -35,13 +48,13 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Log In", "LogIn", "Account")</li>
+                        <li>@Ajax.ActionLink("Log In", "LogIn", "Account", ajaxOptions)</li>
                     }
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" id="container">
         @RenderBody()
         <hr />
         <footer>
@@ -49,9 +62,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jqueryval")
-    @RenderSection("scripts", required: false)
+
 </body>
 </html>

@@ -11,6 +11,10 @@ namespace qStore.Controllers
     {
         public ActionResult Index()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
 
@@ -61,6 +65,10 @@ namespace qStore.Controllers
 
         public ActionResult About()
         {
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView();
+            }
             return View();
         }
     }

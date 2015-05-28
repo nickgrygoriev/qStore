@@ -1,4 +1,4 @@
-﻿@model IEnumerable<qStore.Models.Product>
+﻿@model System.Collections.Generic.IEnumerable<qStore.Models.Product>
 
 @{
     ViewBag.Title = "GetProducts";
@@ -37,7 +37,8 @@
         <td>
             @Html.ActionLink("Edit", "EditProduct", new { id=item.Id }) |
             @*TODO: add details view*@
-            @Html.ActionLink("Details", "GetProductDetails", new { id=item.Id }) |
+            @*@Html.ActionLink("Details", "GetProductDetails", new {id = item.Id}) |*@
+            <a href="@Url.Action("GetProductDetails", new { id = item.Id })" class="details">Details</a> |
             @Html.ActionLink("Delete", "DeleteProduct", new { id=item.Id })
         </td>
     </tr>
@@ -45,6 +46,25 @@
 
 </table>
 
-<div id="modalSection"></div>
+<div id="modalShow"></div>
 
+<script>
+    $(function() {
+        $('a.details').on('click', function(e) {
+            e.preventDefault();
 
+            var url = $(e.currentTarget).attr('href');
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                processData: false,
+                contentType: false
+            }).done(function(result) {
+                $("#modalShow").html(result);
+                $("#myModal").modal('show');
+            });
+        });
+    })
+
+</script>

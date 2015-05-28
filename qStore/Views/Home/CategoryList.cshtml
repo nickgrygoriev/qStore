@@ -1,4 +1,4 @@
-﻿@model List<qStore.Models.Category>
+﻿@model System.Collections.Generic.List<qStore.Models.Category>
 
 <div class="list-group">
     @foreach (var category in Model)
@@ -15,6 +15,14 @@
             var url = $(e.currentTarget).attr('href');
 
             //TODO: create ajax call and replace  $('#products') html
+            $.ajax({
+                url: url,
+                type: 'GET',
+                processData: false,
+                contentType: false
+            }).done(function (result) {
+                $("#products").html(result);
+            });
         });
     })
 </script>

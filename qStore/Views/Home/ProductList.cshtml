@@ -1,10 +1,10 @@
-﻿@model IEnumerable<qStore.Models.ProductInfo>
+﻿@model System.Collections.Generic.IEnumerable<qStore.Models.ProductInfo>
 
 @{
     ViewBag.Title = "ProductList";
 }
 
-<div class="row">
+<div class="row" id="products">
     @foreach (var item in Model)
     {
         <div class="col-sm-6 col-md-4">

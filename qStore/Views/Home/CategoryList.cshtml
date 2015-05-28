@@ -1,0 +1,8 @@
+﻿@model List<qStore.Models.Category>
+
+<div class="list-group">
+    @foreach (var category in Model)
+    {
+        <a href="#" class="list-group-item">@category.Title</a>
+    }
+</div>

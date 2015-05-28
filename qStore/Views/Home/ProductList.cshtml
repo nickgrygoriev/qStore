@@ -1,0 +1,30 @@
+﻿@model IEnumerable<qStore.Models.ProductInfo>
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+<h2>Product List</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                @if (!string.IsNullOrEmpty(item.ImageBase64String))
+                {
+                    <img alt="Image" src="data:@item.ImageContentType;base64,@item.ImageBase64String" />
+                }
+
+                <div class="caption">
+                    <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+
+                    <p>
+                        <a href="#" class="btn btn-default" role="button">Buy for @Html.DisplayFor(modelItem => item.Price)</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
